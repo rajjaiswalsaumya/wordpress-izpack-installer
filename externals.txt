@@ -1,0 +1,1 @@
+wordpress-src http://core.svn.wordpress.org/tags/3.4.2/
