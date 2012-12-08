@@ -9,6 +9,6 @@
 	<url>http://maven.apache.org</url>
 	
 	<modules>
-		<module></module>
+		<module>wordpressinstaller</module>
 	</modules>
 </project>
