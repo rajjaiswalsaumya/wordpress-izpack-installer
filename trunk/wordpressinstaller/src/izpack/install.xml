@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+        <installation version="1.0">
+          <info>
+            <appname>Wordpress Installer</appname>
+            <appversion>1.0</appversion>
+          </info>
+
+          <guiprefs width="600" height="480" resizable="no">
+            <laf name="kunststoff">
+              <os family="unix" />
+            </laf>
+            <modifier key="useHeadingPanel" value="yes"/>
+            <modifier key="useHeadingForSummary" value="yes"/>
+			<modifier key="headingImageOnLeft" value="yes"/>
+            <modifier key="headingLineCount" value="2"/>
+            <modifier key="headingFontSize" value="1.5"/>
+            <modifier key="headingBackgroundColor" value="0x00ffffff"/>
+            <modifier key="headingPanelCounter" value="text"/>
+            <modifier key="headingPanelCounterPos" value="inHeading"/>
+          </guiprefs>
+
+          <locale>
+            <langpack iso3="eng"/>
+          </locale>
+
+          <!-- Need to define ant properties we want to use during install as variables -->
+          <variables>
+            <!--variable name="app.name" value="@{app.name}"/>
+            <variable name="UserPathPanelVariable" value="@{default.dest.dir.sql}"/>
+            <variable name="UserPathPanelDependsName" value="Install Database Server"/>
+            <variable name="jboss.version" value="@{jboss.version}"/>
+            <variable name="install.jboss.service" value="true"/-->
+          </variables>
+
+          <resources>
+            <!--res id="box-out-32.png" src="@{install.res}/box-out-32.png"/>
+            <res id="customicons.xml" src="@{install.res}/custom.icons.xml"/>
+            <res id="CustomLangpack.xml_eng" src="@{install.res}/custom.eng.xml"/>
+            <res id="HTMLInfoPanel.info" src="@{install.res}/license-notice.html"/>
+            <res id="Heading.image" src="@{install.res}/heading-image.png"/>
+            <res id="Installer.image" src="@{install.res}/side-image.png" />
+            <res id="ProcessPanel.Spec.xml" src="@{build.dir}/processing-tasks.xml"/>
+            <res id="userInputSpec.xml" src="@{build.dir}/userInputSpec.xml" />
+            <res id="uninstaller.warning" src="@{install.res}/uninstall-warn.txt"/-->
+            <!-- default-dir.txt is written by the calling build.xml -->
+            <!--res id="TargetPanel.dir" src="@{install.res}/default-dir.txt"/-->
+          </resources>
+
+          <panels>
+            <panel classname="HelloPanel"/>
+            <!--panel classname="HTMLInfoPanel"/>
+            <panel classname="TargetPanel"/>
+            <panel classname="InstallationGroupPanel"/>
+            <panel classname="PacksPanel"/>
+            <panel classname="UserInputPanel" id="UserInputPanel.0"/>
+            <panel classname="UserInputPanel" id="UserInputPanel.1"/>
+            <panel classname="UserInputPanel" id="UserInputPanel.2"/>
+            <panel classname="UserPathPanel"/>
+            <panel classname="SummaryPanel"/>
+            <panel classname="InstallPanel"/>
+            <panel classname="ProcessPanel"/>
+            <panel classname="SimpleFinishPanel"/-->
+          </panels>
+
+          <listeners>
+              <!--listener installer="SummaryLoggerInstallerListener">
+                  <os family="windows"/>
+              </listener-->
+          </listeners>
+
+          <packs>
+            <pack name="Wordpress Sourcecode" required="yes" >
+              <description>Wordpress source code!</description>
+              <!--file src="" targetdir="C:/mywordpress"/-->
+            </pack>    
+          </packs>
+
+          <!-- The native libraries to add. This is required for creating shortcuts on Windows -->
+          <!--native type="izpack" name="ShellLink.dll"/-->
+
+        </installation>
