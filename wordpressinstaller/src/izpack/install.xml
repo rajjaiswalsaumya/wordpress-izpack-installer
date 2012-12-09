@@ -2,8 +2,8 @@
 
         <installation version="1.0">
           <info>
-            <appname>Wordpress Installer</appname>
-            <appversion>1.0</appversion>
+            <appname>${app.name}</appname>
+            <appversion>${app.version}</appversion>
           </info>
 
           <guiprefs width="600" height="480" resizable="no">
@@ -26,8 +26,9 @@
 
           <!-- Need to define ant properties we want to use during install as variables -->
           <variables>
-            <!--variable name="app.name" value="@{app.name}"/>
-            <variable name="UserPathPanelVariable" value="@{default.dest.dir.sql}"/>
+            <variable name="app.name" value="Wordpress Installer"/>
+			<variable name="app.version" value="1.0"/>
+            <!--variable name="UserPathPanelVariable" value="@{default.dest.dir.sql}"/>
             <variable name="UserPathPanelDependsName" value="Install Database Server"/>
             <variable name="jboss.version" value="@{jboss.version}"/>
             <variable name="install.jboss.service" value="true"/-->
@@ -49,6 +50,10 @@
 
           <panels>
             <panel classname="HelloPanel"/>
+			<panel classname="TargetPanel"/>
+			<panel classname="PacksPanel"/>
+			<panel classname="InstallPanel"/>
+            <panel classname="SimpleFinishPanel"/>			
             <!--panel classname="HTMLInfoPanel"/>
             <panel classname="TargetPanel"/>
             <panel classname="InstallationGroupPanel"/>
@@ -63,16 +68,16 @@
             <panel classname="SimpleFinishPanel"/-->
           </panels>
 
-          <listeners>
-              <!--listener installer="SummaryLoggerInstallerListener">
+          <!--listeners>
+              <listener installer="SummaryLoggerInstallerListener">
                   <os family="windows"/>
-              </listener-->
-          </listeners>
+              </listener>
+          </listeners-->
 
           <packs>
-            <pack name="Wordpress Sourcecode" required="yes" >
+            <pack name="Wordpress Sourcecode" required="no" >
               <description>Wordpress source code!</description>
-              <!--file src="" targetdir="C:/mywordpress"/-->
+              <fileset dir="wordpress-src" targetdir="C:/mywordpress" />
             </pack>    
           </packs>
 
