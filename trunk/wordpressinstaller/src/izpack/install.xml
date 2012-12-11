@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
 
         <installation version="1.0">
+		  
+		  <variables>
+		    <variable name="app.name" value="@{app.name}"/>
+			<variable name="app.version" value="@{app.name}"/>
+		  </variables>
+		  
           <info>
-            <appname>${app.name}</appname>
-            <appversion>${app.version}</appversion>
+            <appname>Wordpress Installer</appname>
+            <appversion>1.0</appversion>
           </info>
 
           <guiprefs width="600" height="480" resizable="no">
@@ -28,13 +34,22 @@
           <variables>
             <variable name="app.name" value="Wordpress Installer"/>
 			<variable name="app.version" value="1.0"/>
-            <!--variable name="UserPathPanelVariable" value="@{default.dest.dir.sql}"/>
-            <variable name="UserPathPanelDependsName" value="Install Database Server"/>
-            <variable name="jboss.version" value="@{jboss.version}"/>
-            <variable name="install.jboss.service" value="true"/-->
+			<variable name="wordpress-izpack-installer.variable.databasehost" value=""/>
+			<variable name="wordpress-izpack-installer.variable.databaseusername" value=""/>
+			<variable name="wordpress-izpack-installer.variable.databasepassword" value=""/>
+			<variable name="wordpress-izpack-installer.variable.wordpressdatabasename" value=""/>
+			<variable name="wordpress-izpack-installer.variable.installwordpressdb" value="false"/>			
           </variables>
 
+		  <conditions>
+			<condition type="variable" id="wordpress-izpack-installer.condition.dbinstallation">
+				<name>wordpress-izpack-installer.variable.installwordpressdb</name>
+				<value>true</value>
+			</condition>
+		  </conditions>
+		  
           <resources>
+		    <res id="userInputSpec.xml" src="userInputSpec.xml"/>
             <!--res id="box-out-32.png" src="@{install.res}/box-out-32.png"/>
             <res id="customicons.xml" src="@{install.res}/custom.icons.xml"/>
             <res id="CustomLangpack.xml_eng" src="@{install.res}/custom.eng.xml"/>
@@ -47,13 +62,15 @@
             <!-- default-dir.txt is written by the calling build.xml -->
             <!--res id="TargetPanel.dir" src="@{install.res}/default-dir.txt"/-->
           </resources>
+		  
 
           <panels>
             <panel classname="HelloPanel"/>
-			<panel classname="TargetPanel"/>
 			<panel classname="PacksPanel"/>
+			<panel classname="UserInputPanel" id="SpecifyWebServerDir"/>
+			<panel classname="UserInputPanel" id="MySqlDetails" condition="wordpress-izpack-installer.condition.dbinstallation"/>
 			<panel classname="InstallPanel"/>
-            <panel classname="SimpleFinishPanel"/>			
+            <panel classname="SimpleFinishPanel"/>
             <!--panel classname="HTMLInfoPanel"/>
             <panel classname="TargetPanel"/>
             <panel classname="InstallationGroupPanel"/>
@@ -67,6 +84,16 @@
             <panel classname="ProcessPanel"/>
             <panel classname="SimpleFinishPanel"/-->
           </panels>
+		  
+		  <processing>
+			<job name="Executing Wordpress DB Creation">
+				<os family="windows" />
+				<executeclass name="classname">
+					<args..../>
+				</executeclass>	x`
+			</job>
+		  </processing>
+		  
 
           <!--listeners>
               <listener installer="SummaryLoggerInstallerListener">
