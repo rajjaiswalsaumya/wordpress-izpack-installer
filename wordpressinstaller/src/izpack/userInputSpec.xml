@@ -1,19 +1,30 @@
 <userInput>
 
-	<panel order="0" id="SpecifyWebServerDir">
+	<panel order="0" id="LogFilePath">
+		<field type="title" txt="Specify Log File Path" />
+		<field type="dir" align="left" variable="wordpress-izpack-installer.variable.logdir">
+			<spec txt="Specify Log File Path!" size="25" mustExist="true" />
+		</field>
+	</panel>
+	
+	<panel order="1" id="SpecifyWebServerDir">
 		<createForPack name="Wordpress Sourcecode" />
 		<field type="title" txt="Specify Web Server For Wordpress Installation" />
-		<field type="dir" align="left" variable="existing.jboss.home">
+		
+		<field type="text" variable="wordpress-izpack-installer.variable.wordpressfoldername">
+			<spec txt="Enter Wordpress Foldername:" size="15" set=""/>
+		</field>
+		
+		<field type="dir" align="left" variable="wordpress-izpack-installer.variable.wwwdir">
 			<spec txt="Specify web server www directory!" size="25" mustExist="true" />
 		</field>
 		
 		<field type="check" variable="wordpress-izpack-installer.variable.installwordpressdb">
 			<spec txt="Create Wordpress Database" true="on" false="off" set="false"/>
 		</field>
-
 	</panel>
 	
-    <panel order="1" id="MySqlDetails">
+    <panel order="2" id="MySqlDetails">
 	
 		<createForPack name="Wordpress Sourcecode" />
 		<field type="title" txt="Wordpress Database Creation In mysql" />	
