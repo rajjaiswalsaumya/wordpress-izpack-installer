@@ -2,6 +2,8 @@
 
         <installation version="1.0">
 		    
+		  <jar src="../wordpressinstaller-1.0-SNAPSHOT.jar"/>
+
           <info>
             <appname>Wordpress Installer</appname>
             <appversion>1.0</appversion>
@@ -85,19 +87,16 @@
             <panel classname="SimpleFinishPanel"/-->
           </panels>
 		  
-		  <jar src="../wordpressinstaller-1.0-SNAPSHOT.jar" stage="install"/>
 		  
 		  <processing>
 		    <logfiledir>${wordpress-izpack-installer.variable.logdir}</logfiledir>
 			<job name="Executing Wordpress DB Creation">
 				<os family="windows" />
 				<executeclass name="com.installers.CreateWordpressDb">
-					<args>
-						<arg>${wordpress-izpack-installer.variable.databasehost}</arg>
-						<arg>${wordpress-izpack-installer.variable.wordpressdatabasename}</arg>
-						<arg>${wordpress-izpack-installer.variable.databaseusername}</arg>
-						<arg>${wordpress-izpack-installer.variable.databasepassword}</arg>
-					</args>
+					<arg>${wordpress-izpack-installer.variable.databasehost}</arg>
+					<arg>${wordpress-izpack-installer.variable.wordpressdatabasename}</arg>
+					<arg>${wordpress-izpack-installer.variable.databaseusername}</arg>
+					<arg>${wordpress-izpack-installer.variable.databasepassword}</arg>
 				</executeclass>
 			</job>
 		  </processing>

@@ -96,8 +96,7 @@
 						<installFile>${basedir}/src/izpack/install.xml</installFile>
 					</configuration>
 				</execution>
-			</executions>
-	   
+			</executions>	   
 			<dependencies>
 				<dependency>
 					<groupId>org.codehaus.izpack</groupId>
@@ -113,7 +112,7 @@
         <version>2.6</version>
         <executions>
           <execution>
-            <id>copy-dependencies</id>
+            <id>copy-jars</id>
             <phase>install</phase>
             <goals>
               <goal>copy-dependencies</goal>
@@ -124,7 +123,6 @@
           </execution>
         </executions>
       </plugin>
-      
 		
 	</plugins>
 	
