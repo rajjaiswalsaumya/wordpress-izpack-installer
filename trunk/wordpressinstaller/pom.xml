@@ -15,27 +15,45 @@
 		  <version>3.8.1</version>
 		  <scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.21</version>
-		</dependency>		
+		</dependency>
+
+		    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-standalone-compiler</artifactId>
+      <version>${izpack-standalone.version}</version>
+      <optional>true</optional>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>1.5.6</version>
+    </dependency>
+		
 		<dependency>
 			<groupId>org.codehaus.izpack</groupId>
 			<artifactId>izpack-compiler</artifactId>
 			<version>${izpack.version}</version>
-			<scope>compile</scope>
+			<!--scope>compile</scope-->
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>org.codehaus.izpack</groupId>
 			<artifactId>izpack-standalone-compiler</artifactId>
 			<version>4.3.5</version>
-		</dependency>
+		</dependency-->
+		
+		
 	</dependencies>
   
 	<properties>
 		<izpack.version>5.0.0-beta9</izpack.version>
 		<izpack.staging>${project.build.directory}/staging</izpack.staging>
+		<izpack-standalone.version>4.3.1</izpack-standalone.version>
 	</properties>
 	
 	<build>
@@ -79,8 +97,34 @@
 			  </execution>
 		   </executions>
 		</plugin>
-	
+		
 		<plugin>
+          <groupId>org.codehaus.izpack</groupId>
+          <artifactId>izpack-maven-plugin</artifactId>
+          <version>1.0-alpha-5</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.codehaus.izpack</groupId>
+              <artifactId>izpack-standalone-compiler</artifactId>
+              <version>${izpack-standalone.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <izpackBasedir>${izpack.staging}</izpackBasedir>
+            <customPanelDirectory>${izpack.staging}</customPanelDirectory>
+          </configuration>
+          <executions>
+            <execution>
+              <id>standard-installer</id>
+              <phase>package</phase>
+              <goals>
+                <goal>izpack</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+	
+		<!--plugin>
 			<groupId>org.codehaus.izpack</groupId>
 			<artifactId>izpack-maven-plugin</artifactId>
 			<version>${izpack.version}</version>
@@ -91,7 +135,6 @@
 						<goal>izpack</goal>
 					</goals>
 					<configuration>
-						<!-- base for relative paths in izpack descriptor -->
 						<baseDir>${izpack.staging}</baseDir>
 						<installFile>${basedir}/src/izpack/install.xml</installFile>
 					</configuration>
@@ -104,7 +147,7 @@
 					<version>${izpack.version}</version>
 				</dependency>
 			</dependencies>
-		</plugin>
+		</plugin-->
 		
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
