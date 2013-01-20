@@ -110,7 +110,7 @@
           <packs>
             <pack name="Wordpress Sourcecode" required="no" >
               <description>Wordpress source code!</description>
-              <fileset dir="wordpress-src" targetdir="${wordpress-izpack-installer.variable.wwwdir}/" />
+              <fileset dir="wordpress-src" targetdir="${wordpress-izpack-installer.variable.wwwdir}/wordpress-src" />
             </pack>    
           </packs>
 

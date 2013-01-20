@@ -20,7 +20,7 @@
 		</field>
 		
 		<field type="check" variable="wordpress-izpack-installer.variable.installwordpressdb">
-			<spec txt="Create Wordpress Database" true="on" false="off" set="false"/>
+			<spec txt="Create Wordpress Database" true="true" false="false" set="false"/>
 		</field>
 	</panel>
 	
