@@ -1,6 +1,6 @@
 package com.installers;
 
-import com.izforge.izpack.api.handler.AbstractUIProcessHandler;
+import com.izforge.izpack.util.AbstractUIProcessHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
