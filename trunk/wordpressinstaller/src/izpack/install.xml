@@ -3,6 +3,7 @@
         <installation version="1.0">
 		    
 		  <jar src="../wordpressinstaller-1.0-SNAPSHOT.jar"/>
+		  <jar src="../mysql-connector-java-5.1.21.jar"/>
 
           <info>
             <appname>Wordpress Installer</appname>
@@ -50,6 +51,8 @@
 		  
           <resources>
 		    <res id="userInputSpec.xml" src="userInputSpec.xml"/>
+		    <res id="TargetPanel.dir" src="TargetDir.txt"/>
+		    <res id="ProcessPanel.Spec.xml" src="ProcessPanel.Spec.xml"/>
             <!--res id="box-out-32.png" src="@{install.res}/box-out-32.png"/>
             <res id="customicons.xml" src="@{install.res}/custom.icons.xml"/>
             <res id="CustomLangpack.xml_eng" src="@{install.res}/custom.eng.xml"/>
@@ -67,29 +70,18 @@
           <panels>
             <panel classname="HelloPanel"/>
 			<panel classname="PacksPanel"/>
-			<panel classname="UserInputPanel" id="LogFilePath"/>
+			<panel classname="TargetPanel"/>
 			<panel classname="UserInputPanel" id="SpecifyWebServerDir"/>
 			<panel classname="UserInputPanel" id="MySqlDetails" condition="wordpress-izpack-installer.condition.dbinstallation"/>
+			<panel classname="SummaryPanel"/>
 			<panel classname="InstallPanel"/>
 			<panel classname="ProcessPanel"/>
             <panel classname="SimpleFinishPanel"/>
-            <!--panel classname="HTMLInfoPanel"/>
-            <panel classname="TargetPanel"/>
-            <panel classname="InstallationGroupPanel"/>
-            <panel classname="PacksPanel"/>
-            <panel classname="UserInputPanel" id="UserInputPanel.0"/>
-            <panel classname="UserInputPanel" id="UserInputPanel.1"/>
-            <panel classname="UserInputPanel" id="UserInputPanel.2"/>
-            <panel classname="UserPathPanel"/>
-            <panel classname="SummaryPanel"/>
-            <panel classname="InstallPanel"/>
-            <panel classname="ProcessPanel"/>
-            <panel classname="SimpleFinishPanel"/-->
           </panels>
 		  
 		  
-		  <processing>
-		    <logfiledir>${wordpress-izpack-installer.variable.logdir}</logfiledir>
+		  <!--processing>
+		    <logfiledir>${INSTALL_PATH}</logfiledir>
 			<job name="Executing Wordpress DB Creation">
 				<os family="windows" />
 				<executeclass name="com.installers.CreateWordpressDb">
@@ -99,7 +91,7 @@
 					<arg>${wordpress-izpack-installer.variable.databasepassword}</arg>
 				</executeclass>
 			</job>
-		  </processing>
+		  </processing-->
 
           <!--listeners>
               <listener installer="SummaryLoggerInstallerListener">
@@ -110,7 +102,7 @@
           <packs>
             <pack name="Wordpress Sourcecode" required="no" >
               <description>Wordpress source code!</description>
-              <fileset dir="wordpress-src" targetdir="${wordpress-izpack-installer.variable.wwwdir}/wordpress-src" />
+              <fileset dir="wordpress-src" targetdir="${wordpress-izpack-installer.variable.wwwdir}/${wordpress-izpack-installer.variable.wordpressfoldername}" />
             </pack>    
           </packs>
 

@@ -28,19 +28,21 @@
 			<version>${izpack-standalone.version}</version>
 			<optional>true</optional>
 		</dependency>
-
+		
+		<!-- Copy all the dependencies into target folder, but dont forget to include them in install.xml else no point! -->
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
 			<version>1.5.6</version>
 		</dependency>
 
-		<dependency>
+		<!-- I think there is a difference between this and izpack-standalone-compiler, find out what it is! -->
+		<!--  -->
+		<!--dependency>
 			<groupId>org.codehaus.izpack</groupId>
 			<artifactId>izpack-compiler</artifactId>
 			<version>${izpack.version}</version>
-			<scope>compile</scope>
-		</dependency>
+		</dependency-->
 
 
 	</dependencies>
@@ -100,7 +102,7 @@
 				<executions>
 					<execution>
 						<id>copy-jars</id>
-						<phase>install</phase>
+						<phase>process-resources</phase>
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
