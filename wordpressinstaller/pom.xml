@@ -50,7 +50,7 @@
 	<properties>
 		<izpack.version>5.0.0-beta9</izpack.version>
 		<izpack.staging>${project.build.directory}/staging</izpack.staging>
-		<izpack-standalone.version>4.3.1</izpack-standalone.version>
+		<izpack-standalone.version>4.3.5</izpack-standalone.version>
 	</properties>
 
 	<build>
