@@ -30,11 +30,11 @@
 		</dependency>
 		
 		<!-- Copy all the dependencies into target folder, but dont forget to include them in install.xml else no point! -->
-		<dependency>
+		<!--dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
 			<version>1.5.6</version>
-		</dependency>
+		</dependency-->
 
 		<!-- I think there is a difference between this and izpack-standalone-compiler, find out what it is! -->
 		<!--  -->
@@ -107,7 +107,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}</outputDirectory>
+							<outputDirectory>${izpack.staging}</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>

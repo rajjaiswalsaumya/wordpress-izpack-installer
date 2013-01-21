@@ -3,7 +3,7 @@
         <installation version="1.0">
 		    
 		  <jar src="../wordpressinstaller-1.0-SNAPSHOT.jar"/>
-		  <jar src="../mysql-connector-java-5.1.21.jar"/>
+		  <jar src="mysql-connector-java-5.1.21.jar"/>
 
           <info>
             <appname>Wordpress Installer</appname>
