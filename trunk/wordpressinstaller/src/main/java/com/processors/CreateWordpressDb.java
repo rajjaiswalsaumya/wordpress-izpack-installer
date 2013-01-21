@@ -1,4 +1,4 @@
-package com.installers;
+package com.processors;
 
 import com.izforge.izpack.util.AbstractUIProcessHandler;
 

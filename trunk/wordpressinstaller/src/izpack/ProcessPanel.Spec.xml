@@ -2,7 +2,7 @@
 	<logfiledir>${INSTALL_PATH}</logfiledir>
 	<job name="Executing Wordpress DB Creation">
 		<os family="windows" />
-		<executeclass name="com.installers.CreateWordpressDb">
+		<executeclass name="com.processors.CreateWordpressDb">
 			<arg>${wordpress-izpack-installer.variable.databasehost}</arg>
 			<arg>${wordpress-izpack-installer.variable.wordpressdatabasename}</arg>
 			<arg>${wordpress-izpack-installer.variable.databaseusername}</arg>
