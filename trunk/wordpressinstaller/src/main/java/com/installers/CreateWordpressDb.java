@@ -33,7 +33,8 @@ public class CreateWordpressDb {
 	    } catch (Exception e) {
 
 	    	handler.logOutput("Couldnt create database for wordpress!", false);
-
+	    	handler.emitError("Error", "Couldnt create database for wordpress!");
+	    	
 	    } finally {
 	    	
 	    	if ( conn != null ) {

@@ -72,7 +72,9 @@
 			<panel classname="PacksPanel"/>
 			<panel classname="TargetPanel"/>
 			<panel classname="UserInputPanel" id="SpecifyWebServerDir"/>
-			<panel classname="UserInputPanel" id="MySqlDetails" condition="wordpress-izpack-installer.condition.dbinstallation"/>
+			<panel classname="UserInputPanel" id="MySqlDetails" condition="wordpress-izpack-installer.condition.dbinstallation">
+				<validator classname="com.validators.MySQLAccessValidator"/>
+			</panel>
 			<panel classname="SummaryPanel"/>
 			<panel classname="InstallPanel"/>
 			<panel classname="ProcessPanel"/>
