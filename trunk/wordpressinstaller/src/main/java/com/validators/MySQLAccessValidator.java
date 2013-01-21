@@ -1,5 +1,10 @@
 package com.validators;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import com.izforge.izpack.installer.AutomatedInstallData;
 import com.izforge.izpack.installer.DataValidator;
 
@@ -24,15 +29,40 @@ public class MySQLAccessValidator implements DataValidator {
 
 	public Status validateData(AutomatedInstallData adata) {
 		
-		String databasehost = adata.getVariable( "wordpress-izpack-installer.variable.databasehost" );
-        String databaseusername = adata.getVariable( "wordpress-izpack-installer.variable.databaseusername" );
-        String databasepassword = adata.getVariable( "wordpress-izpack-installer.variable.databasepassword" );
-        String wordpressdatabasename = adata.getVariable( "wordpress-izpack-installer.variable.wordpressdatabasename" );
+		String host = adata.getVariable( "wordpress-izpack-installer.variable.databasehost" );
+        String user = adata.getVariable( "wordpress-izpack-installer.variable.databaseusername" );
+        String pass = adata.getVariable( "wordpress-izpack-installer.variable.databasepassword" );
 
-        System.out.println(databasehost + " " + databaseusername);
-        
-        return Status.ERROR;
-        
+        Connection conn = null;
+		Statement stat = null;
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://"+host, user, pass);
+			return Status.OK;
+			
+	    } catch (Exception e) {
+
+	    	return Status.ERROR;
+	         
+	    } finally {
+	    	
+	    	if ( conn != null ) {
+	    		try {
+					conn.close();
+				} catch (SQLException e) {
+			    	
+				}
+	    	}
+	    	if ( stat != null ) {
+	    		try {
+					stat.close();
+				} catch (SQLException e) {
+				}
+	    	}
+	    	
+	    }
+       
 	}
 	
 	
